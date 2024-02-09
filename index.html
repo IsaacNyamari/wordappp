@@ -37,6 +37,11 @@
                     </form>
                 </div>
                 <h2 id="meaning" class="text-left">Meaning</h2>
+                <div class="text-center" id="loader">
+                    <div class="spinner-border spinner-lg" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
                 <div id="mainOut">
                     <ul id="resultsOut"></ul>
                 </div>
@@ -48,14 +53,17 @@
         let mainOut = document.getElementById("mainOut")
         let searchBtn = document.getElementById("searchBtn")
         let searchValue = document.getElementById("searchValue")
+        document.getElementById("loader").style.display = "none"
         searchBtn.addEventListener("click", () => {
             resultsOut.innerHTML = "";
             let xhr = new XMLHttpRequest()
             xhr.open("get", `https://api.dictionaryapi.dev/api/v2/entries/en/${searchValue.value}`, true)
             xhr.onload = function () {
+                document.getElementById("loader").style.display = "block"
                 reslts = JSON.parse(this.response)
                 resultDefinitions = reslts[0].meanings[0].definitions;
                 if (resultDefinitions.length > 1 && (this.status = 200)) {
+                    document.getElementById("loader").style.display = "none"
                     resultExample = reslts[0].meanings[0].example;
                     resultDefinitions.forEach(definitions => {
                         resultsOut.innerHTML += `<li>${definitions.definition}</li>`
@@ -66,6 +74,7 @@
         })
         document.querySelector('form').addEventListener("submit", (e) => {
             e.preventDefault()
+            document.getElementById("loader").style.display = "block"
             resultsOut.innerHTML = "";
             let xhr = new XMLHttpRequest()
             xhr.open("get", `https://api.dictionaryapi.dev/api/v2/entries/en/${searchValue.value}`, true)
@@ -73,6 +82,7 @@
                 reslts = JSON.parse(this.response)
                 resultDefinitions = reslts[0].meanings[0].definitions;
                 if (resultDefinitions.length > 1 && (this.status = 200)) {
+                    document.getElementById("loader").style.display = "none"
                     resultExample = reslts[0].meanings[0].example;
                     resultDefinitions.forEach(definitions => {
                         resultsOut.innerHTML += `<li>${definitions.definition}</li>`
