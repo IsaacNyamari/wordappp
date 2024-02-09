@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <title>Online Dictionary</title>
+    <style>
+        .text-center {
+            text-align: center;
+        }
+
+        input {
+            height: 30px !important;
+            border-radius: 50px !important;
+            font-size: 16px !important;
+            padding-left: 10px 5px 5px 5px !important;
+            box-shadow: none !important;
+            display: flex;
+        }
+        .searchControls{
+            display: flex !important;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/f81865a21f.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-sm-8">
+                <div class="searchControls">
+                    <input type="text" id="searchValue" class="form-control">
+                <i id="searchBtn" class="btn fa-solid fa-magnifying-glass"></i>
+                </div>
+                <h2 id="meaning" class="text-left">Meaning</h2>
+                <div id="mainOut">
+                    <ul id="resultsOut"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let resultsOut = document.getElementById("resultsOut")
+        let mainOut = document.getElementById("mainOut")
+        let searchBtn = document.getElementById("searchBtn")
+        let searchValue = document.getElementById("searchValue")
+        searchBtn.addEventListener("click", () => {
+            resultsOut.innerHTML = "";
+            let xhr = new XMLHttpRequest()
+            xhr.open("get", `https://api.dictionaryapi.dev/api/v2/entries/en/${searchValue.value}`, true)
+            xhr.onload = function () {
+                reslts = JSON.parse(this.response)
+                resultDefinitions = reslts[0].meanings[0].definitions;
+                if (resultDefinitions.length > 1 && (this.status = 200)) {
+                    resultExample = reslts[0].meanings[0].example;
+                    resultDefinitions.forEach(definitions => {
+                        resultsOut.innerHTML += `<li>${definitions.definition}</li>`
+                    });
+                }
+            }
+            xhr.send()
+        })
+    </script>
+</body>
+
+</html>
