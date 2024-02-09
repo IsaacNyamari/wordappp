@@ -19,7 +19,8 @@
             box-shadow: none !important;
             display: flex;
         }
-        .searchControls{
+
+        .searchControls {
             display: flex !important;
         }
     </style>
@@ -31,8 +32,10 @@
         <div class="row justify-content-center">
             <div class="col-sm-8">
                 <div class="searchControls">
-                    <input type="text" id="searchValue" class="form-control">
-                <i id="searchBtn" class="btn fa-solid fa-magnifying-glass"></i>
+                    <form>
+                        <input type="text" id="searchValue" class="form-control">
+                        <i id="searchBtn" class="btn fa-solid fa-magnifying-glass"></i>
+                    </form>
                 </div>
                 <h2 id="meaning" class="text-left">Meaning</h2>
                 <div id="mainOut">
@@ -47,6 +50,23 @@
         let searchBtn = document.getElementById("searchBtn")
         let searchValue = document.getElementById("searchValue")
         searchBtn.addEventListener("click", () => {
+            resultsOut.innerHTML = "";
+            let xhr = new XMLHttpRequest()
+            xhr.open("get", `https://api.dictionaryapi.dev/api/v2/entries/en/${searchValue.value}`, true)
+            xhr.onload = function () {
+                reslts = JSON.parse(this.response)
+                resultDefinitions = reslts[0].meanings[0].definitions;
+                if (resultDefinitions.length > 1 && (this.status = 200)) {
+                    resultExample = reslts[0].meanings[0].example;
+                    resultDefinitions.forEach(definitions => {
+                        resultsOut.innerHTML += `<li>${definitions.definition}</li>`
+                    });
+                }
+            }
+            xhr.send()
+        })
+        document.querySelector('form').addEventListener("submit", (e) => {
+            e.preventDefault()
             resultsOut.innerHTML = "";
             let xhr = new XMLHttpRequest()
             xhr.open("get", `https://api.dictionaryapi.dev/api/v2/entries/en/${searchValue.value}`, true)
