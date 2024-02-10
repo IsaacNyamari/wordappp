@@ -21,7 +21,7 @@ let resultsOut = document.getElementById("resultsOut")
             }
             xhr.send()
         })
-        document.querySelector('form').addEventListener("submit", (e) => {
+        document.querySelector('.sss').addEventListener("submit", (e) => {
             e.preventDefault()
             document.getElementById("loader").style.display = "block"
             resultsOut.innerHTML = "";
