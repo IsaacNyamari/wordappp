@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="./css/cdn.jsdelivr.net_npm_jquery@3.6.4_dist_jquery.slim.min.js"></script>
+    <script src="./css/cdn.jsdelivr.net_npm_popper.js@1.16.1_dist_umd_popper.min.js"></script>
+    <script src="./css/cdn.jsdelivr.net_npm_bootstrap@4.6.2_dist_js_bootstrap.bundle.min.js"></script>
     <title>Online Dictionary</title>
     <style>
         .text-center {
@@ -19,7 +22,8 @@
             box-shadow: none !important;
             display: flex;
         }
-        .searchControls{
+
+        .searchControls {
             display: flex !important;
         }
     </style>
@@ -29,62 +33,64 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
-      
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </div>
-      </nav>
+    </nav>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-sm-8">
                 <form>
-                        <div class="searchControls">
+                    <div class="searchControls">
                         <input type="text" id="searchValue" class="form-control">
                         <i id="searchBtn" class="btn fa-solid fa-magnifying-glass"></i>
-                    </form>
+                </form>
+            </div>
+            <h2 id="meaning" class="text-left">Meaning</h2>
+            <div class="text-center" id="loader">
+                <div class="spinner-border spinner-lg" role="status">
+                    <span class="sr-only"></span>
                 </div>
-                <h2 id="meaning" class="text-left">Meaning</h2>
-                <div class="text-center" id="loader">
-                    <div class="spinner-border spinner-lg" role="status">
-                      <span class="sr-only">Loading...</span>
-                    </div>
-                  </div>
-                <div id="mainOut">
-                    <ul id="resultsOut"></ul>
-                </div>
+            </div>
+            <div id="mainOut">
+                <ul id="resultsOut"></ul>
             </div>
         </div>
     </div>
+    </div>
     <script src="js/main.js">
-        
+
     </script>
 </body>
 

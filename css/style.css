@@ -1,0 +1,96 @@
+.form-control-file {
+    display: none;
+}
+
+.terms {
+    opacity: 0.3;
+}
+
+.termsOpacity {
+    opacity: 1;
+}
+
+#uploadImage {
+    display: none;
+    width: 80px;
+    height: 80px;
+}
+
+body {
+    background: rgba(40, 167, 69, 0.51);
+}
+
+.main-app {
+    /*margin: 0;*/
+    height: 86vh !important;
+
+}
+
+#audioPoster {
+    width: 230px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 0 5% 5%;
+    animation: rotation 5s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.controls > i {
+    padding: 0 15px 0 15px;
+    cursor: pointer;
+}
+
+#introVideo {
+    width: 100%;
+    height: auto;
+    background: url(../images/piano.jpg);
+    object-fit: cover;
+}
+
+.all-songs {
+    height: 80vh !important;
+}
+
+.all-songs > ul > li {
+    list-style-type: none;
+    margin-top: 6px;
+    padding: 5px;
+}
+
+#search {
+    border-radius: 50px !important;
+    display: flex;
+    border: none !important;
+    box-shadow: none;
+    outline: none;
+}
+
+#search:focus {
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+.searchBtn {
+    color: #fa4747;
+}
+
+.fa-magnifying-glass {
+    margin-top: 20px;
+    margin-left: -30px !important;
+    cursor: pointer;
+}
+
+.all-songs > ul > li:hover {
+    background: #c5c2c2;
+    cursor: pointer;
+}
